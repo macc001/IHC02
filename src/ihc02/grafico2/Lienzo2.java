@@ -28,7 +28,7 @@ public class Lienzo2 extends Canvas {
     public void paint(Graphics g) {
         System.out.println(sin60);
         dibujar(g, 5, 600, 600, 100, 600);
-       //  g.drawLine(600, 600, 100, 600);
+        //  g.drawLine(600, 600, 100, 600);
     }
 
     private void dibujar(Graphics g, int nivel, double x1, double y1, double x2, double y2) {
@@ -48,12 +48,12 @@ public class Lienzo2 extends Canvas {
             g.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
             g.drawLine((int) x2, (int) y2, (int) xp32, (int) yp32);
             g.drawLine((int) xp32, (int) yp32, (int) x1, (int) y1);
-        } else {
-            dibujar(g, nivel - 1, x1, y1, dx1, dy1);
-            dibujar(g, nivel - 1, dx1, dy1, x2, y2);
-            g.setColor(Color.red);
-            dibujar(g, nivel - 1, dx3, dy3, dx2, dy2);
+            return;
         }
+        dibujar(g, nivel - 1, x1, y1, dx1, dy1);
+        dibujar(g, nivel - 1, dx1, dy1, x2, y2);
+        g.setColor(Color.red);
+        dibujar(g, nivel - 1, dx3, dy3, dx2, dy2);
     }
 
 }

@@ -25,7 +25,7 @@ public class Lienzo3 extends Canvas {
     }
 
     public void paint(Graphics g) {
-        dibujar(g, 2, 600, 600, 100, 600);
+        dibujar(g, 5, 220, 300, 5, 300);
     }
 
     private void dibujar(Graphics g, int nivel, double x1, double y1, double x2, double y2) {
@@ -33,15 +33,15 @@ public class Lienzo3 extends Canvas {
         double dy = (y2 - y1) / 3.;
         double xx = x1 + 3 * dx / 2. - dy * sin60;
         double yy = y1 + 3 * dy / 2. + dx * sin60;
-        if (nivel <= 0) {
+        if (nivel == 0) {
             g.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
-        } else {
-            dibujar(g, nivel - 1, x1, y1, x1 + dx, y1 + dy);
-            g.setColor(Color.red);
-            dibujar(g, nivel - 1, x1 + dx, y1 + dy, xx, yy);
-            dibujar(g, nivel - 1, xx, yy, x2 - dx, y2 - dy);
-            g.setColor(Color.blue);
-            dibujar(g, nivel - 1, x2 - dx, y2 - dy, x2, y2);
+            return;
         }
+        dibujar(g, nivel - 1, x1, y1, x1 + dx, y1 + dy);
+        g.setColor(Color.red);
+        dibujar(g, nivel - 1, x1 + dx, y1 + dy, xx, yy);
+        dibujar(g, nivel - 1, xx, yy, x2 - dx, y2 - dy);
+        g.setColor(Color.blue);
+        dibujar(g, nivel - 1, x2 - dx, y2 - dy, x2, y2);
     }
 }
